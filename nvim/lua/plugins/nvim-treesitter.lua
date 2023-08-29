@@ -7,6 +7,10 @@ return {
         "gomod",
         "gowork",
         "gosum",
+        "ninja",
+        "python",
+        "rst",
+        "toml",
       })
     end,
   },
