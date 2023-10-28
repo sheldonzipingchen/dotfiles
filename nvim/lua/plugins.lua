@@ -23,6 +23,9 @@ return require('lazy').setup({
     -- nvim-treesitter
     require('plugins.treesitter'),
 
+    -- go.nvim
+    require('plugins.ray-x'),
+
     -- neo-tree
     require('plugins.neo-tree'),
 
