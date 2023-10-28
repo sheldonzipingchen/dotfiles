@@ -307,7 +307,7 @@ end,
         lazy = false,
         priority = 1000,
         config = function()
-            vim.g.material_style = 'oceanic'
+            vim.g.material_style = 'palenight'
             vim.cmd [[colorscheme material]]
         end,
     },
