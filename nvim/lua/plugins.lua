@@ -21,5 +21,13 @@ return require('lazy').setup({
 	"folke/which-key.nvim",
 
 	-- Themes
-	{ "marko-cerovac/material.nvim" },
+	{ 
+        "marko-cerovac/material.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.g.material_style = 'oceanic'
+            vim.cmd [[colorscheme material]]
+        end,
+    },
 })
