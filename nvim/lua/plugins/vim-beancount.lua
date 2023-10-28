@@ -1,5 +1,0 @@
-return {
-  {
-    "nathangrigg/vim-beancount",
-  },
-}
