@@ -19,4 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 
 return require('lazy').setup({
 	"folke/which-key.nvim",
+
+	-- Themes
+	{ "marko-cerovac/material.nvim" },
 })
