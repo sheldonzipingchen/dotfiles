@@ -20,6 +20,9 @@ vim.opt.rtp:prepend(lazypath)
 return require('lazy').setup({
     require('plugins.which-key'),
 
+    -- nvim-treesitter
+    require('plugins.treesitter'),
+
     -- neo-tree
     require('plugins.neo-tree'),
 
