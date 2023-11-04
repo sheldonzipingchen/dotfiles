@@ -20,6 +20,9 @@ vim.opt.rtp:prepend(lazypath)
 return require('lazy').setup({
     require('plugins.which-key'),
 
+    -- auto-completion engine
+    require('plugins.nvim-cmp'),
+    
     -- nvim-treesitter
     require('plugins.treesitter'),
 
