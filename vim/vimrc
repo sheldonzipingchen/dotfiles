@@ -1,0 +1,5 @@
+set enc=utf-8
+set nocompatible
+set backup
+set undofile
+source $VIMRUNTIME/vimrc_example.vim
