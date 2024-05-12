@@ -11,8 +11,8 @@ if has('autocmd')
 endif
 
 if has('gui_running')
-  set guifont=FiraCode_Nerd_Font_Propo:h13
-  set guifontwide=FiraCode_Nerd_Font_Propo:h13
+  set guifont=FiraCode_Nerd_Font_Propo:h14
+  set guifontwide=FiraCode_Nerd_Font_Propo:h14
 
   " 不延迟加载菜单（需要放在下面的 source 语句之前）
   let do_syntax_sel_menu = 1
@@ -65,3 +65,37 @@ if !has('gui_running')
     set termguicolors
   endif
 endif
+
+call plug#begin()
+        Plug 'nanotech/jellybeans.vim'
+        Plug 'preservim/nerdtree'
+        Plug 'nathangrigg/vim-beancount'
+
+        Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+call plug#end()
+
+colorscheme jellybeans
+
+nnoremap <C-t> :NERDTreeToggle<CR> 
+
+" disable all linters as that is taken care of by coc.nvim
+let g:go_diagnostics_enabled=0
+let g:go_metalinter_enabled=[]
+
+" don't jump to errors after metalinter is invoked
+let g:go_jump_to_error=0
+
+" run go imports on file save
+let g:go_fmt_command="goimports"
+
+" automatically highlight variable your cursor is on
+let g:go_auto_sameids=0
+
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
