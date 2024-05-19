@@ -1,4 +1,5 @@
-" vim:set expandtab shiftwidth=2 tabstop=8 textwidth=72:
+vim9script
+# vim:set expandtab shiftwidth=2 tabstop=8 textwidth=72:
 
 if exists('$VIM_TERMINAL')
   echoerr 'Do not run Vim inside a Vim terminal'
@@ -6,7 +7,7 @@ if exists('$VIM_TERMINAL')
 endif
 
 if has('autocmd')
-  " 为了可以重新执行 vimrc，开头先清除当前组的自动命令
+  # 为了可以重新执行 vimrc，开头先清除当前组的自动命令
   au!
 endif
 
@@ -14,15 +15,15 @@ if has('gui_running')
   set guifont=FiraCode_Nerd_Font_Propo:h14
   set guifontwide=FiraCode_Nerd_Font_Propo:h14
 
-  " 不延迟加载菜单（需要放在下面的 source 语句之前）
-  let do_syntax_sel_menu = 1
-  let do_no_lazyload_menus = 1
+  # 不延迟加载菜单（需要放在下面的 source 语句之前）
+  var do_syntax_sel_menu = 1
+  var do_no_lazyload_menus = 1
 endif
 
 set enc=utf-8
 source $VIMRUNTIME/vimrc_example.vim
 
-" 启用 man 插件
+# 启用 man 插件
 source $VIMRUNTIME/ftplugin/man.vim
 
 set fileencodings=ucs-bom,utf-8,gb18030,latin1
@@ -50,7 +51,7 @@ if has('mouse')
 endif
 
 if !has('gui_running')
-  " 设置文本菜单
+  # 设置文本菜单
   if has('wildmenu')
     set wildmenu
     set cpoptions-=<
@@ -59,7 +60,7 @@ if !has('gui_running')
     inoremap <F10> <C-0>   :emenu <C-Z>
   endif
 
-  " 识别终端的真彩支持
+  # 识别终端的真彩支持
   if has('termguicolors') &&
         \($COLORTERM == 'truecolor' || $COLORTERM == '24bit')
     set termguicolors
@@ -72,30 +73,44 @@ call plug#begin()
         Plug 'nathangrigg/vim-beancount'
 
         Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+        Plug 'yegappan/lsp'
 call plug#end()
 
 colorscheme jellybeans
 
 nnoremap <C-t> :NERDTreeToggle<CR> 
 
-" disable all linters as that is taken care of by coc.nvim
-let g:go_diagnostics_enabled=0
-let g:go_metalinter_enabled=[]
+# disable all linters as that is taken care of by coc.nvim
+g:go_diagnostics_enabled = 0
+g:go_metalinter_enabled = []
 
-" don't jump to errors after metalinter is invoked
-let g:go_jump_to_error=0
+# don't jump to errors after metalinter is invoked
+g:go_jump_to_error = 0
 
-" run go imports on file save
-let g:go_fmt_command="goimports"
+# run go imports on file save
+g:go_fmt_command = 'goimports'
 
-" automatically highlight variable your cursor is on
-let g:go_auto_sameids=0
+# automatically highlight variable your cursor is on
+g:go_auto_sameids = 0
 
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 1
+g:go_highlight_types = 1
+g:go_highlight_fields = 1
+g:go_highlight_functions = 1
+g:go_highlight_function_calls = 1
+g:go_highlight_operators = 1
+g:go_highlight_extra_types = 1
+g:go_highlight_build_constraints = 1
+g:go_highlight_generate_tags = 1
+
+var lspServers = [
+  {
+    'name': 'golang',
+    'filetype': ['go', 'gomod'],
+    'path': '/Users/sheldon/go/bin/gopls',
+    'args': ['serve']
+  }
+]
+
+lsp#lsp#AddServer(lspServers)
+
